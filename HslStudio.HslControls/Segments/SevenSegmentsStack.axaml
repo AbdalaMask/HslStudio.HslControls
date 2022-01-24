@@ -1,0 +1,40 @@
+<local:SegmentsStackBase xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 xmlns:local="using:HslStudio.HslControls.Segments"			 
+             x:Class="HslStudio.HslControls.Segments.SevenSegmentsStack">
+	<Grid>
+		<ItemsControl  x:Name="SegmentsArray" >
+			<ItemsControl.ItemsPanel>
+				<ItemsPanelTemplate>
+					<local:ArrangedPanel />
+				</ItemsPanelTemplate>
+			</ItemsControl.ItemsPanel>
+
+			<ItemsControl.ItemTemplate>
+				<DataTemplate>
+					<local:ArrangedPanel >
+						<local:SevenSegments Value="{Binding Item}"
+                                            ShowDot="{Binding ShowDot}"
+                                            OnDot="{Binding OnDot}"
+                                            ShowColon="{Binding ShowColon}"
+                                            OnColon="{Binding OnColon}"
+                                            FillBrush="{Binding FillBrush}"
+                                            SelectedFillBrush ="{Binding SelectedFillBrush}"
+                                            PenColor ="{Binding PenColor}"
+                                            SelectedPenColor ="{Binding SelectedPenColor}"
+                                            PenThickness ="{Binding PenThickness}"
+                                            GapWidth ="{Binding GapWidth}"
+                                            RoundedCorners="{Binding RoundedCorners}"
+                                            TiltAngle ="{Binding TiltAngle}"
+                                            VertSegDivider ="{Binding VertSegDivider}"
+                                            HorizSegDivider ="{Binding HorizSegDivider}"
+                                            Margin="5,0,0,0"/>
+					</local:ArrangedPanel>
+				</DataTemplate>
+			</ItemsControl.ItemTemplate>
+		</ItemsControl>
+	</Grid>
+</local:SegmentsStackBase>
