@@ -12,6 +12,7 @@ namespace HslStudio.HslControls.Segments
     [DesignTimeVisible(false)]
     public partial class SevenSegmentsStack : SegmentsStackBase
     {
+        private ItemsControl SegmentsArray;
         /// <summary>
         /// Stores chars from the splitted value string
         /// </summary>
@@ -20,16 +21,17 @@ namespace HslStudio.HslControls.Segments
         public SevenSegmentsStack()
         {
             InitializeComponent();
+            SegmentsArray = this.FindControl<ItemsControl>("SegmentsArray");
         }
 
         private void InitializeComponent()
         {
             AvaloniaXamlLoader.Load(this);
         }
-        public override void OnPropertyChanged(IAvaloniaObject sender, AvaloniaPropertyChangedEventArgs e)
+        public override void OnPropertyChanged(object? sender, AvaloniaPropertyChangedEventArgs e)
         {
             ValueChars = GetCharsArray();
-            SegmentsArray.ItemsSource = ValueChars;
+            SegmentsArray.Items = ValueChars;
         }
     }
 }

@@ -253,11 +253,11 @@ namespace HslStudio.HslControls.Segments
         private void CalculateMeasures()
         {
             //Horiz. figure
-            HorizSegH = Height / HorizSegDivider;
+            HorizSegH = ActualHeight / HorizSegDivider;
             HorizSegSmallPartH = HorizSegH / 4;
 
             //Vert. figure
-            VertSegW = Width / VertSegDivider;
+            VertSegW = ActualWidth / VertSegDivider;
             VertSegPartW = (VertSegW / 3.5);
             VertSegSmallPartH = VertSegW / 3.5;
             VertSegBotPartW = VertSegW / 2;
@@ -265,14 +265,14 @@ namespace HslStudio.HslControls.Segments
             HorizSegSmallPartW = VertSegW / 4;
 
             //The points calculation
-            MidPoint = Height / 2;
+            MidPoint = ActualHeight / 2;
             GapW = GapWidth;
 
             DotDiameter = HorizSegH;
             ColonDiameter = HorizSegH;
 
-            VirtualHeight = ShowDot ? Height - DotDiameter / 1.5 : Height;
-            VirtualWidth = ShowDot ? Width - DotDiameter / 1.5 : Width;
+            VirtualHeight = ShowDot ? ActualHeight - DotDiameter / 1.5 : ActualHeight;
+            VirtualWidth = ShowDot ? ActualWidth - DotDiameter / 1.5 : ActualWidth;
 
             figureStartPointY = VirtualHeight - (HorizSegSmallPartH + GapW + VertSegSmallPartH);
             startPointThickness = PenThickness / 2;
@@ -387,10 +387,10 @@ namespace HslStudio.HslControls.Segments
         {
             if (ShowDot)
             {
-                PathGeometry pathGeometry = new PathGeometry();
+                EllipseGeometry pathGeometry = new EllipseGeometry();
                 Pen dotPen = new Pen(new SolidColorBrush(OnDot ? SelectedPenColor : PenColor), PenThickness);
                 Point centerPoint = new Point(Width - DotDiameter / 2, Height - DotDiameter / 2);
-                pathGeometry = CreateEllipseGeometry(centerPoint, pathGeometry, DotDiameter / 2);
+                pathGeometry = CreateEllipseGeometry(centerPoint, DotDiameter / 2);
                 SolidColorBrush sc = new SolidColorBrush(Color.FromArgb(SelectedFillBrush.A, SelectedFillBrush.R, SelectedFillBrush.G, SelectedFillBrush.B));
                 SolidColorBrush sc2 = new SolidColorBrush(Color.FromArgb(FillBrush.A, FillBrush.R, FillBrush.G, FillBrush.B));
 
@@ -406,7 +406,7 @@ namespace HslStudio.HslControls.Segments
         {
             if (ShowColon)
             {
-                PathGeometry pathGeometry = new PathGeometry();
+                EllipseGeometry pathGeometry = new EllipseGeometry();
 
                 double hUpper = (MiddleSegmPoints[2].Y - GapW - HorizSegH) - (HorizSegH + GapW);
                 double yTop = HorizSegH + GapW + hUpper / 2 + ColonDiameter / 2;
@@ -423,7 +423,7 @@ namespace HslStudio.HslControls.Segments
 
                 // the top ellipse
                 Point centerPoint = new Point(xTopMiddle, yTop);
-                pathGeometry = CreateEllipseGeometry(centerPoint, pathGeometry, ColonDiameter / 2);
+                pathGeometry = CreateEllipseGeometry(centerPoint, ColonDiameter / 2);
                 SolidColorBrush sc = new SolidColorBrush(Color.FromArgb(SelectedFillBrush.A, SelectedFillBrush.R, SelectedFillBrush.G, SelectedFillBrush.B));
                 SolidColorBrush sc2 = new SolidColorBrush(Color.FromArgb(FillBrush.A, FillBrush.R, FillBrush.G, FillBrush.B));
 
@@ -432,7 +432,7 @@ namespace HslStudio.HslControls.Segments
 
                 //the bottom ellipse
                 centerPoint = new Point(xBottomMiddle, yBottom);
-                pathGeometry = CreateEllipseGeometry(centerPoint, pathGeometry, ColonDiameter / 2);
+                pathGeometry = CreateEllipseGeometry(centerPoint, ColonDiameter / 2);
                 SolidColorBrush sc1 = new SolidColorBrush(Color.FromArgb(SelectedFillBrush.A, SelectedFillBrush.R, SelectedFillBrush.G, SelectedFillBrush.B));
                 SolidColorBrush sc3 = new SolidColorBrush(Color.FromArgb(FillBrush.A, FillBrush.R, FillBrush.G, FillBrush.B));
 
@@ -442,25 +442,26 @@ namespace HslStudio.HslControls.Segments
             }
         }
 
-        private PathGeometry CreateEllipseGeometry(Point centerPoint,
-            PathGeometry pathGeometry,
-            double diameter)
+        private EllipseGeometry CreateEllipseGeometry(Point centerPoint,
+               double diameter)
         {
             EllipseGeometry ellipseGeometry;
             SkewTransform transform;
-            ellipseGeometry = new EllipseGeometry
+            ellipseGeometry = new EllipseGeometry();
+            ellipseGeometry.Center = centerPoint;
+            ellipseGeometry.RadiusX = diameter;
+            ellipseGeometry.RadiusY = diameter;
+
+
+
+            transform = new SkewTransform
             {
-                Center = centerPoint,
-                RadiusX = diameter,
-                RadiusY = diameter
+                AngleX = -TiltAngle,
+                AngleY = 0,
+
             };
-
-            pathGeometry = PathGeometry.CreateFromGeometry(ellipseGeometry);
-
-            transform = new SkewTransform(-TiltAngle,
-                0, centerPoint.X, centerPoint.Y);
-            pathGeometry.Transform = transform;
-            return pathGeometry;
+            ellipseGeometry.Transform = transform;
+            return ellipseGeometry;
         }
 
 

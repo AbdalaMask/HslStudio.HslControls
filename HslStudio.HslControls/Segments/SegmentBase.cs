@@ -43,23 +43,7 @@ namespace HslStudio.HslControls.Segments
 
         static SegmentBase()
         {
-            PenColorProperty.Changed.AddClassHandler<SegmentBase>(x => x.VisualChanged);
-            SelectedPenColorProperty.Changed.AddClassHandler<SegmentBase>(x => x.VisualChanged);
-            FillBrushProperty.Changed.AddClassHandler<SegmentBase>(x => x.VisualChanged);
-            PenThicknessProperty.Changed.AddClassHandler<SegmentBase>(x => x.VisualChanged);
-            SelectedFillBrushProperty.Changed.AddClassHandler<SegmentBase>(x => x.VisualChanged);
-            ValueProperty.Changed.AddClassHandler<SegmentBase>(x => x.VisualChanged);
-            GapWidthProperty.Changed.AddClassHandler<SegmentBase>(x => x.VisualChanged);
-            ShowDotProperty.Changed.AddClassHandler<SegmentBase>(x => x.VisualChanged);
-            OnDotProperty.Changed.AddClassHandler<SegmentBase>(x => x.VisualChanged);
-            ShowColonProperty.Changed.AddClassHandler<SegmentBase>(x => x.VisualChanged);
-            OnColonProperty.Changed.AddClassHandler<SegmentBase>(x => x.VisualChanged);
-            TiltAngleProperty.Changed.AddClassHandler<SegmentBase>(x => x.VisualChanged);
-            RoundedCornersProperty.Changed.AddClassHandler<SegmentBase>(x => x.VisualChanged);
-            SelectedSegmentsProperty.Changed.AddClassHandler<SegmentBase>(x => x.VisualChanged);
-            SegmentsBrushProperty.Changed.AddClassHandler<SegmentBase>(x => x.VisualChanged);
-            VertSegDividerProperty.Changed.AddClassHandler<SegmentBase>(x => x.VisualChanged);
-            HorizSegDividerProperty.Changed.AddClassHandler<SegmentBase>(x => x.VisualChanged);
+            
 
             PenThicknessProperty = AvaloniaProperty.Register<SegmentBase, double>(nameof(PenThickness), 1.0);
 
@@ -93,7 +77,25 @@ namespace HslStudio.HslControls.Segments
             VertSegDividerProperty = AvaloniaProperty.Register<SegmentBase, double>(nameof(VertSegDivider), 5.0);
 
             HorizSegDividerProperty = AvaloniaProperty.Register<SegmentBase, double>(nameof(HorizSegDivider), 9.0);
-           
+
+            PenColorProperty.Changed.AddClassHandler<SegmentBase>(x => x.VisualChanged);
+            SelectedPenColorProperty.Changed.AddClassHandler<SegmentBase>(x => x.VisualChanged);
+            FillBrushProperty.Changed.AddClassHandler<SegmentBase>(x => x.VisualChanged);
+            PenThicknessProperty.Changed.AddClassHandler<SegmentBase>(x => x.VisualChanged);
+            SelectedFillBrushProperty.Changed.AddClassHandler<SegmentBase>(x => x.VisualChanged);
+            ValueProperty.Changed.AddClassHandler<SegmentBase>(x => x.VisualChanged);
+            GapWidthProperty.Changed.AddClassHandler<SegmentBase>(x => x.VisualChanged);
+            ShowDotProperty.Changed.AddClassHandler<SegmentBase>(x => x.VisualChanged);
+            OnDotProperty.Changed.AddClassHandler<SegmentBase>(x => x.VisualChanged);
+            ShowColonProperty.Changed.AddClassHandler<SegmentBase>(x => x.VisualChanged);
+            OnColonProperty.Changed.AddClassHandler<SegmentBase>(x => x.VisualChanged);
+            TiltAngleProperty.Changed.AddClassHandler<SegmentBase>(x => x.VisualChanged);
+            RoundedCornersProperty.Changed.AddClassHandler<SegmentBase>(x => x.VisualChanged);
+            SelectedSegmentsProperty.Changed.AddClassHandler<SegmentBase>(x => x.VisualChanged);
+            SegmentsBrushProperty.Changed.AddClassHandler<SegmentBase>(x => x.VisualChanged);
+            VertSegDividerProperty.Changed.AddClassHandler<SegmentBase>(x => x.VisualChanged);
+            HorizSegDividerProperty.Changed.AddClassHandler<SegmentBase>(x => x.VisualChanged);
+
         }
 
         /// <summary>

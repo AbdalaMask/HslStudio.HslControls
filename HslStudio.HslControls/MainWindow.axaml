@@ -4,6 +4,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="HslStudio.HslControls.MainWindow"
+	    xmlns:local="using:HslStudio.HslControls.Segments"
         Title="HslStudio.HslControls">
-    Welcome to Avalonia!
+	<Grid>
+		<local:SevenSegmentsStack HorizontalAlignment="Right" Height="44"  Width="169" Value="888" ElementsCount="5" SelectedFillBrush="#FF15B823" FillBrush="#35FFFFFF"  PenThickness="0" TiltAngle="3" VertSegDivider="6" GapWidth="1"/>
+	</Grid>
 </Window>
