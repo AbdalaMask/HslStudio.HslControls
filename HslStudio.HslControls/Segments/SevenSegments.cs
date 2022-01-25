@@ -843,7 +843,7 @@ namespace HslStudio.HslControls.Segments
             MiddleSegmPoints = GetMiddleSegmPoints();
 
             Point startPoint = MiddleSegmPoints[0];
-            PolyLineSegment segment = new PolyLineSegment { Points = MiddleSegmPoints };
+            PolyLineSegment segment = new PolyLineSegment(MiddleSegmPoints );
             return SegmentPathGeometry(startPoint, segment);
         }
 

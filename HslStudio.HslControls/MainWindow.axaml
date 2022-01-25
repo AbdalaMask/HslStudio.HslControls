@@ -7,6 +7,12 @@
 	    xmlns:local="using:HslStudio.HslControls.Segments"
         Title="HslStudio.HslControls">
 	<Grid>
-		<local:SevenSegmentsStack HorizontalAlignment="Right" Height="44"  Width="169" Value="888" ElementsCount="5" SelectedFillBrush="#FF15B823" FillBrush="#35FFFFFF"  PenThickness="0" TiltAngle="3" VertSegDivider="6" GapWidth="1"/>
+		<local:SevenSegmentsStack HorizontalAlignment="Center" Height="44"  Width="169" Value="666" ElementsCount="5" SelectedFillBrush="#FF15B823" FillBrush="#35FFFFFF"  PenThickness="0" TiltAngle="3" VertSegDivider="6" GapWidth="1"/>
+		<local:SixteenSegmentsStack
+			 Value="ABCDEFG"
+			 RoundedCorners="True"
+			 SelectedFillBrush="Coral"
+			 ElementsCount="8"
+			 HorizontalAlignment="Left" Height="100" Margin="147,204,0,0" VerticalAlignment="Top" Width="705"/>
 	</Grid>
 </Window>

@@ -1,0 +1,39 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:HslStudio.HslControls"
+		xmlns:segm="clr-namespace:HslStudio.HslControls.Segments"
+		>
+  <Design.PreviewWith>
+    <controls:SevenSegments2  HorizontalAlignment="Center" Height="44"  Width="169" Value="666" ElementsCount="5" SelectedFillBrush="#FF15B823" FillBrush="#35FFFFFF"  PenThickness="0" TiltAngle="3" VertSegDivider="6" GapWidth="1"/>
+  </Design.PreviewWith>
+
+  <Style Selector="controls|SevenSegments2">
+    <!-- Set Defaults -->
+	
+    <Setter Property="Template">
+      <ControlTemplate >
+
+		  <Grid>
+			  <segm:SevenSegmentsStack
+								  ElementsCount="{Binding RelativeSource={RelativeSource TemplatedParent}, Path= ElementsCount}"
+								  Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path= Value}"
+								  ShowDot="{Binding RelativeSource={RelativeSource TemplatedParent}, Path= ShowDot}"
+								  OnDot="{Binding RelativeSource={RelativeSource TemplatedParent}, Path= OnDot}"
+								  ShowColon="{Binding RelativeSource={RelativeSource TemplatedParent}, Path= ShowColon}"
+								  OnColon="{Binding RelativeSource={RelativeSource TemplatedParent}, Path= OnColon}"
+								  FillBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path= FillBrush}"
+								  SelectedFillBrush ="{Binding RelativeSource={RelativeSource TemplatedParent}, Path= SelectedFillBrush}"
+								  PenColor ="{Binding RelativeSource={RelativeSource TemplatedParent}, Path= PenColor}"
+								  SelectedPenColor ="{Binding RelativeSource={RelativeSource TemplatedParent}, Path= SelectedPenColor}"
+								  PenThickness ="{Binding RelativeSource={RelativeSource TemplatedParent}, Path= PenThickness}"
+								  GapWidth ="{Binding RelativeSource={RelativeSource TemplatedParent}, Path= GapWidth}"
+								  RoundedCorners="{Binding RelativeSource={RelativeSource TemplatedParent}, Path= RoundedCorners}"
+								  TiltAngle ="{Binding RelativeSource={RelativeSource TemplatedParent}, Path= TiltAngle}"
+								  VertSegDivider ="{Binding RelativeSource={RelativeSource TemplatedParent}, Path= VertSegDivider}"
+								  HorizSegDivider ="{Binding RelativeSource={RelativeSource TemplatedParent}, Path= HorizSegDivider}"
+                                            />
+		  </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>
