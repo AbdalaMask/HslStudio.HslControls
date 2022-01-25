@@ -253,11 +253,11 @@ namespace HslStudio.HslControls.Segments
         private void CalculateMeasures()
         {
             //Horiz. figure
-            HorizSegH = ActualHeight / HorizSegDivider;
+            HorizSegH = Bounds.Height / HorizSegDivider;
             HorizSegSmallPartH = HorizSegH / 4;
 
             //Vert. figure
-            VertSegW = ActualWidth / VertSegDivider;
+            VertSegW = Bounds.Width / VertSegDivider;
             VertSegPartW = (VertSegW / 3.5);
             VertSegSmallPartH = VertSegW / 3.5;
             VertSegBotPartW = VertSegW / 2;
@@ -265,14 +265,14 @@ namespace HslStudio.HslControls.Segments
             HorizSegSmallPartW = VertSegW / 4;
 
             //The points calculation
-            MidPoint = ActualHeight / 2;
+            MidPoint = Bounds.Height / 2;
             GapW = GapWidth;
 
             DotDiameter = HorizSegH;
             ColonDiameter = HorizSegH;
 
-            VirtualHeight = ShowDot ? ActualHeight - DotDiameter / 1.5 : ActualHeight;
-            VirtualWidth = ShowDot ? ActualWidth - DotDiameter / 1.5 : ActualWidth;
+            VirtualHeight = ShowDot ? Bounds.Height - DotDiameter / 1.5 : Bounds.Height;
+            VirtualWidth = ShowDot ? Bounds.Width - DotDiameter / 1.5 : Bounds.Width;
 
             figureStartPointY = VirtualHeight - (HorizSegSmallPartH + GapW + VertSegSmallPartH);
             startPointThickness = PenThickness / 2;
@@ -389,7 +389,7 @@ namespace HslStudio.HslControls.Segments
             {
                 EllipseGeometry pathGeometry = new EllipseGeometry();
                 Pen dotPen = new Pen(new SolidColorBrush(OnDot ? SelectedPenColor : PenColor), PenThickness);
-                Point centerPoint = new Point(Width - DotDiameter / 2, Height - DotDiameter / 2);
+                Point centerPoint = new Point(Bounds.Width - DotDiameter / 2, Bounds.Height - DotDiameter / 2);
                 pathGeometry = CreateEllipseGeometry(centerPoint, DotDiameter / 2);
                 SolidColorBrush sc = new SolidColorBrush(Color.FromArgb(SelectedFillBrush.A, SelectedFillBrush.R, SelectedFillBrush.G, SelectedFillBrush.B));
                 SolidColorBrush sc2 = new SolidColorBrush(Color.FromArgb(FillBrush.A, FillBrush.R, FillBrush.G, FillBrush.B));
